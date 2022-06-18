@@ -1,0 +1,25 @@
+.crossImgContainer{
+    position: absolute;
+    top: 30px;
+    left: 250px;
+    cursor: pointer;
+}
+.tabRow{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.tabsContainer{
+    margin-top: 30px;
+}
+.tabText{
+    margin-left: 10px;
+}
+.leftArrow{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
