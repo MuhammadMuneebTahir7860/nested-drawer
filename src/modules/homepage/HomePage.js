@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Drawer from '../../components/drawer/Drawer'
+import Header from '../../components/Header/Header';
+import NavBar from '../../components/navbar/NavBar';
 import './HomePageStyle.css';
 export default function HomePage() {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -16,7 +18,7 @@ export default function HomePage() {
         'Adiddas',
         'GUCCI',
     ]
-    const clothes=[
+    const clothes = [
         'T-shirts',
         'Kurta',
     ]
@@ -27,8 +29,9 @@ export default function HomePage() {
     }
     return (
         <>
-            <button onClick={toggleDrawer}>Show</button>
+            <Header toggleDrawer={toggleDrawer} />
             <Drawer value={value} clothes={clothes} nestedDrawerHandler={nestedDrawerHandler} drawerData={drawerData} crossHandler={crossHandler} brands={brands} nestedDrawer={nestedDrawer} setNestedDrawer={setNestedDrawer} isOpen={isOpen} toggleDrawer={toggleDrawer} />
+            <NavBar />
         </>
     )
 }

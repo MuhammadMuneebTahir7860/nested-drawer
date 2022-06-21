@@ -1,0 +1,96 @@
+.Header-Section{
+    background-color: #F7F8F8;
+    height: auto;
+    position: fixed;
+    padding-top: 5px;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.root{
+    flex-grow: 1;
+    padding: 10px;
+}
+.search-section{
+    display: inline-flex;
+}
+#searchBar{
+    width: 100%;
+    height: 55px;
+    margin-top: -3px;
+    font-size: 18px;
+    border: 1px solid black;
+    padding: 20px;
+}
+#searchBar:focus{
+    border-radius: 4px;
+    outline: none;
+    border-color: #80bdff;
+}
+#search-icon{
+    background-color: rgb(0, 47, 52);
+    width: 50px !important;
+    margin-top: -3px;
+    height: 55px !important;
+    cursor: pointer;
+}
+#icon{
+    color: white !important;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+}
+#login-icons-section-mobile{
+    display: none;
+}
+#login-icons-section{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    justify-content: flex-end;
+}
+#login-heading{
+    font-size: 18px;
+    text-decoration: 2px underline;
+    margin-right: 20px;
+}
+#login-heading:hover{
+    text-decoration: none;
+}
+.cartIcon{
+    margin-right: 10px;
+}
+.button-logo{
+    display: inline-flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.barIcon{
+    display: none;
+}
+@media only screen and (max-width: 899px) {
+    #login-icons-section{
+        display: none;
+    }
+    #login-icons-section-mobile{
+        display: inline-flex;
+        width: 100%;
+        align-items: center;
+        padding: 10px;
+        justify-content: flex-end;
+    }
+    .mobileViewForIconsAndLoginBtn{
+        width: 50%;
+        justify-content: flex-end;
+    }
+    .barIcon{
+        display: inline-flex;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .search-section{
+        margin-top: -40px !important;
+    }
+  }
