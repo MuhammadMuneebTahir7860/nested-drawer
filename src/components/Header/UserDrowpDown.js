@@ -1,57 +1,23 @@
-import Button from '@material-ui/core/Button';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuList from '@material-ui/core/MenuList';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuList from '@mui/material/MenuList';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import CameraAltOutlinedIcon from '@material-ui/icons/CameraAltOutlined';
-import AvatarImage from '../../assets/download.png';
-import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {AuthActionLogout} from '../../redux/actions/AuthActions';
-import {useDispatch,useSelector} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-    width:'300px',
-    marginRight:30,
-    marginTop:10
-  },
-  large: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-    margin: theme.spacing(0, 2),
-  },
-  userSection:{
-      display:'inline-flex',
-      lineHeight:0.5,
-  },
- 
-}));
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
 
-export default function MenuListComposition() {
-  const authState = useSelector(state => state.AuthReducer.isUserLoggedIn)
-    const dispatch=useDispatch();
+export default function MenuListComposition({setAuthState,authState}) {
     const logoutHandler = () =>{
-        dispatch(AuthActionLogout())
-        return <Redirect to={'/'}/>
+      setAuthState(false)
     }
-  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -70,7 +36,7 @@ const handleClose = () =>{
     }
   }
   return (
-    <div className={classes.root}>
+    <div style={{display:'flex'}}>
       <div>
         <Button
           ref={anchorRef}
@@ -78,7 +44,7 @@ const handleClose = () =>{
           aria-haspopup="true"
           onClick={handleOPen}
         >
-          <img src={AvatarImage} width="40px" height='40px' alt="" />
+          <Avatar alt="Remy Sharp" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTADr-3PrecoVO1hoAmq1qUaXmfmPNM30r2Nw&usqp=CAU'} />
           {open?
             <ExpandLessIcon style={{cursor:'pointer',marginTop:-10}} onClick={handleClose} id='expandLessIcon' />
             :
@@ -92,12 +58,12 @@ const handleClose = () =>{
               {...TransitionProps}
               style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
             >
-              <Paper className={classes.paper}>
+              <Paper style={{width:300,marginRight:30,marginTop:10}} >
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                   <List>
-        <div className={classes.userSection}>
-        <Avatar alt="Remy Sharp" src={AvatarImage} className={classes.large} />
+        <div style={{display:'inline-flex',lineHeight:0.5}}>
+        <Avatar alt="Remy Sharp" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTADr-3PrecoVO1hoAmq1qUaXmfmPNM30r2Nw&usqp=CAU'} />
         <div>
           {authState? 
             <p style={{marginTop:'30px'}}>Welcome to OLX!</p>
@@ -111,36 +77,36 @@ const handleClose = () =>{
         </List>
         <Divider />
         <List>
-        <Link onClick={handleClose} className='link' to='/selling'>
+        {/* <Link onClick={handleClose} className='link' to='/selling'> */}
         <ListItem>
               <ListItemIcon>
-              <CameraAltOutlinedIcon />
+              {/* <CameraAltOutlinedIcon /> */}
               </ListItemIcon>
               <ListItemText>
                  Start selling
                   </ListItemText>
             </ListItem>
-            </Link>
-            <Link onClick={handleClose} className='link' to='/my-ads'>
+            {/* </Link> */}
+            {/* <Link onClick={handleClose} className='link' to='/my-ads'> */}
         <ListItem>
             <ListItemIcon>
-            <AssignmentOutlinedIcon />
+            {/* <AssignmentOutlinedIcon /> */}
               </ListItemIcon>
               <ListItemText>My ads</ListItemText>
             </ListItem>
-            </Link>
-            <Link onClick={handleClose} className='link' to='/my-favourities'>
+            {/* </Link> */}
+            {/* <Link onClick={handleClose} className='link' to='/my-favourities'> */}
             <ListItem>
             <ListItemIcon>
-            <FavoriteBorderIcon />
+            {/* <FavoriteBorderIcon /> */}
               </ListItemIcon>
               <ListItemText>My Favourities</ListItemText>
             </ListItem>
-            </Link>
+            {/* </Link> */}
            <Divider />
            <ListItem style={{cursor:'pointer'}} onClick={logoutHandler}>
             <ListItemIcon>
-            <ExitToAppIcon />
+            {/* <ExitToAppIcon /> */}
               </ListItemIcon>
               <ListItemText>Logout</ListItemText>
             </ListItem>

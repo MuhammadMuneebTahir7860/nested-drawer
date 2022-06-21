@@ -6,9 +6,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MenuIcon from '@mui/icons-material/Menu';
-export default function Header({toggleDrawer}) {
+import UserDropDown from './UserDrowpDown';
+export default function Header({ toggleDrawer }) {
     const [pending, setPending] = useState(true);
-    const authState = false;
+    const [authState, setAuthState] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [location, setLocation] = React.useState('');
     let searchData = '';
@@ -38,12 +39,11 @@ export default function Header({toggleDrawer}) {
                         </Grid>
                         {/* For Mobile */}
                         <Grid className='mobileViewForIconsAndLoginBtn'>
-                            <span id="login-icons-section-mobile">
+                            <span style={{marginTop:authState&&9}}  id="login-icons-section-mobile">
                                 {authState ?
-                                    // <UserDropDown />
-                                    <div />
+                                    <UserDropDown authState={authState} setAuthState={setAuthState} />
                                     :
-                                    <h4 id='login-heading'>
+                                    <h4 onClick={() => setAuthState(true)} id='login-heading'>
                                         Login
                                     </h4>
                                 }
@@ -58,12 +58,11 @@ export default function Header({toggleDrawer}) {
                             <div id='search-icon'>< SearchIcon id='icon' /></div>
                         </Grid>
                         <Grid lg={2} md={3}>
-                            <span id="login-icons-section">
+                            <span style={{marginTop:authState&&9}} id="login-icons-section">
                                 {authState ?
-                                    // <UserDropDown />
-                                    <div />
+                                    <UserDropDown authState={authState} setAuthState={setAuthState} />
                                     :
-                                    <h4 id='login-heading'>
+                                    <h4 onClick={() => setAuthState(true)} id='login-heading'>
                                         Login
                                     </h4>
                                 }
